@@ -36,7 +36,7 @@ coverage.xml
 [Ll]ocal
 [Ss]cripts
 pyvenv.cfg
-.env
+# .env
 .venv
 env/
 venv/
