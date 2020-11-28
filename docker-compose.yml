@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+  lead-database:
+    image: postgres:11-alpine
+    container_name: lead-database
+    hostname: lead-database
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=leads
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    # volumes:
+    #   - ./database:/var/lib/postgresql/data
+    networks:
+      - lead-network
+
+  lead-api:
+    build:
+      context: .
+      target: builder
+    container_name: lead-api
+    entrypoint: ./entrypoint.sh
+    env_file:
+      - ./.env
+    links:
+      - lead-database
+    networks:
+      - lead-network
+    volumes:
+      - .:/leads
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+    command: python manage.py runserver 0.0.0.0:8000
+
+networks:
+    lead-network:
+      driver: bridge
