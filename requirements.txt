@@ -1,0 +1,20 @@
+# requirements Production
+django
+djangorestframework
+gunicorn
+prettyconf
+psycopg2-binary
+kafka-python
+dj-database-url
+django-rest-swagger
+
+# requirements Develop
+factory_boy
+flake8
+ipdb
+pre-commit
+pytest
+pytest-cov
+pytest-django
+pytest-deadfixtures
+pytest-randomly
