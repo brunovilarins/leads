@@ -21,7 +21,6 @@ services:
   lead-api:
     build:
       context: .
-      target: builder
     container_name: lead-api
     entrypoint: ./entrypoint.sh
     env_file:

@@ -1,4 +1,4 @@
-FROM python:3.8.5 as builder
+FROM python:3.8.5
 
 RUN mkdir /leads
 VOLUME /leads
