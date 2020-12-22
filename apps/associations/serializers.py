@@ -14,7 +14,6 @@ class AssociationSerializer(serializers.ModelSerializer):
         )
 
     def validate(self, data):
-        print('validando')
         agents = sorted(Agents.objects.all(), key=lambda m: m.score, reverse=True)
         if agents:
             if agents[0].pk != data.get('agent').pk and agents[0].score != data.get('agent').score:
